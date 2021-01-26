@@ -1,15 +1,12 @@
 import java.util.*;
 public class RomanNumbers {
-//Split the string into characters.  //Doesn't look like I'm actually using this?
-//Convert each character into its integer value
-//for each, if current value >= next value, add current value to running total
-//else add next value to running total and subtract current value
 
+//Create a map with Roman numerial as key and equivalent Integer as value
+//for each char if current value >= next value, add current value to running total
+//else add next value to running total and subtract current value
+//as a quick ugly fix, added another value to the String to avoid null & string out of bound errors
 
     public static int convertRoman(String str) {
-
-        // char[] symbols = str.toCharArray();
-
 
         Map<Character, Integer> number = new HashMap<>();
         number.put('I', 1);
@@ -21,24 +18,35 @@ public class RomanNumbers {
         number.put('M', 1000);
         number.put('o', 0);
 
-        String str1= str+"o";
+        String str1 = str + "o";
         int result = 0;
+        int i = 0;
+        /*
 
-        for (int i = 0; i<str1.length()-1; i++) {
-            if (number.get(str1.charAt(i)) >= number.get(str1.charAt(i + 1))) {
+        while (i < str1.length() - 1) {
+            if (number.get(str1.charAt(i)) >= number.get(str1.charAt(i + 1)))
                 result += number.get(str1.charAt(i));
-
-            }else{
-                    result += number.get(str1.charAt(i+1) - number.get(str1.charAt(i)));
-                }
-
-
+            else {
+                result = result + number.get(str1.charAt(i + 1)) - number.get(str1.charAt(i));
+                i++;
             }
+            i++;
+        }
+        return result;
+    }*/
 
+       for (i = 0; i<str1.length()-1; i++) {
+            if (number.get(str1.charAt(i)) >= number.get(str1.charAt(i + 1)))
+                result += number.get(str1.charAt(i));
+            else{
+                    result = result + number.get(str1.charAt(i+1)) - number.get(str1.charAt(i));
+                    i++;
+                }
+            }
             return result;
 
         }
-        /*
+        /*From Sam
         int tempNum;
         int preNum = 0;
         for (int i = str.length() - 1; i >= 0; i--) {

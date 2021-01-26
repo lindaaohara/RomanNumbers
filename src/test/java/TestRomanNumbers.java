@@ -17,5 +17,13 @@ public class TestRomanNumbers {
         int actual = RomanNumbers.convertRoman(str);
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void testConversion3(){
+        String str = "III";
+        int expected = 3;
+        int actual =RomanNumbers.convertRoman(str);
+        Assert.assertEquals(expected, actual);
+    }
 }
 
