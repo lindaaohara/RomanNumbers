@@ -7,8 +7,8 @@ public class RomanNumbers {
 
 
     public static int convertRoman(String str) {
-        int result = 0;
-       // char[] symbols = str.toCharArray();
+
+        // char[] symbols = str.toCharArray();
 
 
         Map<Character, Integer> number = new HashMap<>();
@@ -19,20 +19,41 @@ public class RomanNumbers {
         number.put('C', 100);
         number.put('D', 500);
         number.put('M', 1000);
+        number.put('o', 0);
 
+        String str1= str+"o";
+        int result = 0;
 
-        for (int i = 1; i < str.length(); i++) {
-            if (number.get(str.charAt(i)) >= number.get(str.charAt(i - 1))) {
-                result+=number.get(str.charAt(i) - number.get(str.charAt(i - 1)));
+        for (int i = 0; i<str1.length()-1; i++) {
+            if (number.get(str1.charAt(i)) >= number.get(str1.charAt(i + 1))) {
+                result += number.get(str1.charAt(i));
+
+            }else{
+                    result += number.get(str1.charAt(i+1) - number.get(str1.charAt(i)));
+                }
+
 
             }
-            result += number.get(str.charAt(i - 1));
+
+            return result;
 
         }
+        /*
+        int tempNum;
+        int preNum = 0;
+        for (int i = str.length() - 1; i >= 0; i--) {
+            tempNum = number.get(str.charAt(i));
+            if (tempNum < preNum) {
+                result -= tempNum;
+            } else {
+                result += tempNum;
+                preNum += tempNum;
 
+            }
+        }
         return result;
-
-    }
+    }*/
 }
+
 
 
